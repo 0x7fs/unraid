@@ -71,7 +71,7 @@ const fullPathForName = (name, type, diskNumber) => {
   const diskPath = pathForDiskNumber(diskNumber);
   const share = shareNameFromType(type);
 
-  return `${diskPath}/${share}/${escape(name)}/`;
+  return `${diskPath}/${share}/${escape(name)}`;
 };
 
 const performCopy = () => {
