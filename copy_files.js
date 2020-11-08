@@ -44,7 +44,7 @@ while (true) {
   const exists = checkIfFolderExists(path);
 
   if (!exists) {
-    console.log(`Disk ${highestDiskNumber} does not exist`);
+    console.log(`Disk ${highestDiskNumber--} does not exist`);
     break;
   }
 
