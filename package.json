@@ -1,0 +1,22 @@
+{
+  "name": "unraid",
+  "version": "1.0.0",
+  "description": "## Helpful Commands",
+  "main": "copy_files.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "yargs": "^16.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0x7fs/unraid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0x7fs/unraid/issues"
+  },
+  "homepage": "https://github.com/0x7fs/unraid#readme"
+}
