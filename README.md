@@ -2,11 +2,9 @@
 
 ## File Mover Script
 
-Example:
-
-```sh
-node copy_files -n "American Horror Story" -t tv -d 3
-```
+1. Change into `/home/unraid/`
+2. `npm install`
+3. `node copy_files -n "American Horror Story" -t tv -d 3`
 
 ## Helpful Commands
 
