@@ -42,3 +42,8 @@ xfs_db> quit
 ```
 
 Resource: https://forums.unraid.net/topic/44592-defrag-xfs-array-drives/
+
+
+## Things to Install
+
+1. NerdPack (Perl/tmux/etc) https://raw.githubusercontent.com/dmacias72/unRAID-NerdPack/master/plugin/NerdPack.plg
