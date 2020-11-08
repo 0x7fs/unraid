@@ -29,6 +29,10 @@ const argv = yargs(hideBin(process.argv))
 
 const { name, type, destination } = argv;
 
+const execute = async (command) => {
+  await exec(command, { stdio: "inherit" });
+};
+
 const pathForDiskNumber = (diskNumber) => {
   return `/mnt/disk${diskNumber}`;
 };
@@ -74,27 +78,45 @@ const fullPathForName = (name, type, diskNumber) => {
   return `${diskPath}/${share}/${name}/`;
 };
 
-const performCopy = () => {
-  // rsync --remove-source-files -av --progress /mnt/disk5/tv/American\ Dad/ /mnt/disk3/tv/American\ Dad/
+const performMove = async (fromPath, toPath) => {
+  try {
+    console.log(`Starting copy from ${fromPath} to ${toPath}`);
+    await execute(
+      `rsync --remove-source-files -av --progress ${fromPath} ${toPath}`
+    );
+
+    console.log(`Deleting old files from ${fromPath}`);
+
+    await execute(`rm -rf ${fromPath}`);
+  } catch (error) {
+    console.log(
+      `!!! Failed to move files from ${fromPath} to ${toPath}. Bailing!`
+    );
+    throw error;
+  }
 };
 
-// console.log(JSON.stringify(argv, null, 2));
-console.log(fullPathForName(name, type, destination));
-
 console.log("Beginning checking disks for specified media...");
+const destinationPath = fullPathForName(name, type, destination);
 
-for (let diskNumber = 1; diskNumber <= highestDiskNumber; diskNumber++) {
-  if (diskNumber === destination) {
-    // Don't try to copy FROM the desination disk
-    continue;
+const run = async () => {
+  for (let diskNumber = 1; diskNumber <= highestDiskNumber; diskNumber++) {
+    if (diskNumber === destination) {
+      // Don't try to copy FROM the desination disk
+      continue;
+    }
+
+    const path = fullPathForName(name, type, diskNumber);
+    console.log(`Checking for media at: ${path}`);
+    const exists = checkIfFolderExists(path);
+
+    if (!exists) {
+      console.log(`${name} does not exist on disk ${diskNumber}`);
+      continue;
+    }
+
+    await performMove(path, destinationPath);
   }
+};
 
-  const path = fullPathForName(name, type, diskNumber);
-  console.log(`Checking for media at: ${path}`);
-  const exists = checkIfFolderExists(path);
-
-  if (!exists) {
-    console.log(`${name} does not exist on disk ${diskNumber}`);
-    continue;
-  }
-}
+run();
