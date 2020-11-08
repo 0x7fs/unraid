@@ -71,7 +71,7 @@ const fullPathForName = (name, type, diskNumber) => {
   const diskPath = pathForDiskNumber(diskNumber);
   const share = shareNameFromType(type);
 
-  return `/mnt/disk${diskNumber}/${share}/${escape(name)}/`;
+  return `${diskPath}/${diskNumber}/${share}/${escape(name)}/`;
 };
 
 const performCopy = () => {
@@ -80,8 +80,20 @@ const performCopy = () => {
 
 // console.log(JSON.stringify(argv, null, 2));
 console.log(fullPathForName(name, type, destination));
-// if (argv.ships > 3 && argv.distance < 53.5) {
-//   console.log("Plunder more riffiwobbles!");
-// } else {
-//   console.log("Retreat from the xupptumblers!");
-// }
+
+console.log("Beginning checking disks for specified media...");
+
+for (let diskNumber = 1; diskNumber <= highestDiskNumber; diskNumber++) {
+  if (diskNumber === destination) {
+    // Don't try to copy FROM the desination disk
+    continue;
+  }
+
+  const path = fullPathForName(name, type, diskNumber);
+  const exists = checkIfFolderExists(path);
+
+  if (!exists) {
+    console.log(`${name} does not exist on disk ${diskNumber}`);
+    continue;
+  }
+}
