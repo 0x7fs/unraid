@@ -46,4 +46,6 @@ Resource: https://forums.unraid.net/topic/44592-defrag-xfs-array-drives/
 
 ## Things to Install
 
-1. NerdPack (Perl/tmux/etc) https://raw.githubusercontent.com/dmacias72/unRAID-NerdPack/master/plugin/NerdPack.plg
+1. UnRAID NVIDIA (Must be done first to get NVIDIA drivers working properly)
+2. NerdPack (Perl/tmux/etc) https://raw.githubusercontent.com/dmacias72/unRAID-NerdPack/master/plugin/NerdPack.plg
+3. Unassigned Devices
