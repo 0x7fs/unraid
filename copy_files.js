@@ -4,6 +4,7 @@ const yargs = require("yargs/yargs");
 const fs = require("fs");
 const { hideBin } = require("yargs/helpers");
 const escape = require("escape-path-with-spaces");
+const exec = require("child_process").execSync;
 
 const argv = yargs(hideBin(process.argv))
   .option("name", {
