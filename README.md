@@ -1,4 +1,4 @@
-# unraid
+# UnRAID Server Config Info (Public Repo)
 
 ## Helpful Commands
 
@@ -17,7 +17,6 @@ tmux a -t NAME
 ```
 
 Cheatsheet: https://tmuxcheatsheet.com
-
 
 ### Disk Defrag
 
@@ -42,7 +41,6 @@ xfs_db> quit
 ```
 
 Resource: https://forums.unraid.net/topic/44592-defrag-xfs-array-drives/
-
 
 ## Things to Install
 
