@@ -1,5 +1,13 @@
 # UnRAID Server Config Info (Public Repo)
 
+## File Mover Script
+
+Example:
+
+```sh
+node copy_files -n "American Horror Story" -t tv -d 3
+```
+
 ## Helpful Commands
 
 ### tmux
