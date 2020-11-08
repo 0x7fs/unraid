@@ -90,6 +90,7 @@ for (let diskNumber = 1; diskNumber <= highestDiskNumber; diskNumber++) {
   }
 
   const path = fullPathForName(name, type, diskNumber);
+  console.log(`Checking for media at: ${path}`);
   const exists = checkIfFolderExists(path);
 
   if (!exists) {
