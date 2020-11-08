@@ -53,7 +53,7 @@ while (true) {
   highestDiskNumber++;
 }
 
-console.log(`Highest disk determined to be #${highestDiskNumber}`);
+console.log(`Highest disk determined to be #${highestDiskNumber}\n\n`);
 
 const shareNameFromType = (type) => {
   // These are similar now but they might not always be.
@@ -71,7 +71,7 @@ const fullPathForName = (name, type, diskNumber) => {
   const diskPath = pathForDiskNumber(diskNumber);
   const share = shareNameFromType(type);
 
-  return `${diskPath}/${diskNumber}/${share}/${escape(name)}/`;
+  return `${diskPath}/${share}/${escape(name)}/`;
 };
 
 const performCopy = () => {
