@@ -80,15 +80,18 @@ const fullPathForName = (name, type, diskNumber) => {
 };
 
 const performMove = async (fromPath, toPath) => {
+  const escapedFromPath = escape(fromPath);
+  const escapedToPath = escape(toPath);
+
   try {
     console.log(`Starting copy from ${fromPath} to ${toPath}`);
     await execute(
-      `rsync --remove-source-files -av --progress ${fromPath} ${toPath}`
+      `rsync --remove-source-files -av --progress ${escapedFromPath} ${escapedToPath}`
     );
 
     console.log(`Deleting old files from ${fromPath}`);
 
-    await execute(`rm -rf ${fromPath}`);
+    await execute(`rm -rf ${escapedFromPath}`);
   } catch (error) {
     console.log(
       `!!! Failed to move files from ${fromPath} to ${toPath}. Bailing!`
