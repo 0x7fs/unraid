@@ -80,8 +80,8 @@ const fullPathForName = (name, type, diskNumber) => {
 };
 
 const performMove = async (fromPath, toPath) => {
-  const escapedFromPath = escape(fromPath.replaceAll("'", "'"));
-  const escapedToPath = escape(toPath.replaceAll("'", "'"));
+  const escapedFromPath = escape(fromPath.replace(/'/g, "'"));
+  const escapedToPath = escape(toPath.replace(/'/g, "'"));
 
   try {
     console.log(`Starting copy from ${fromPath} to ${toPath}`);
