@@ -5,6 +5,7 @@ const fs = require("fs");
 const { hideBin } = require("yargs/helpers");
 const escape = require("escape-path-with-spaces");
 const exec = require("child_process").execSync;
+const sanitize = require("sanitize-filename");
 
 const argv = yargs(hideBin(process.argv))
   .option("name", {
@@ -80,8 +81,8 @@ const fullPathForName = (name, type, diskNumber) => {
 };
 
 const performMove = async (fromPath, toPath) => {
-  const escapedFromPath = escape(fromPath);
-  const escapedToPath = escape(toPath);
+  const escapedFromPath = escape(sanitize(fromPath));
+  const escapedToPath = escape(sanitize(toPath));
 
   try {
     console.log(`Starting copy from ${fromPath} to ${toPath}`);

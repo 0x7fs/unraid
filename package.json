@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "escape-path-with-spaces": "^1.0.0",
+    "sanitize-filename": "^1.6.3",
     "yargs": "^16.1.0"
   },
   "repository": {
