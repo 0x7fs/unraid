@@ -26,6 +26,9 @@ Cheatsheet: https://tmuxcheatsheet.com
 
 ### Disk Defrag
 
+
+#### Getting Fragmentation Info
+
 ```sh
 # The -r means read-only, so for this step no changes are made
 # use /dev/mdX, not /dev/sdXX
@@ -44,6 +47,12 @@ xfs_db> frag -f
 actual 1317, ideal 705, fragmentation factor 46.47%
 
 xfs_db> quit
+```
+
+#### Running Defrag
+
+```sh
+xfs_fsr -v /dev/md3
 ```
 
 Resource: https://forums.unraid.net/topic/44592-defrag-xfs-array-drives/
